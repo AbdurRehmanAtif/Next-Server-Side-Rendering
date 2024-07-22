@@ -5,8 +5,9 @@ import Helper from "@/utils/Helper";
 import { NextRequest, NextResponse } from "next/server";
 import CustomError from "./CustomError";
 import performNextRequest, { ApiResponse } from "./http/NextApi";
-import { Profile } from "@/app/components/auth/login/route";
+import { Profile } from "@/app/auth/login/route";
 import ProfileService from "./ProfileService";
+import { signupLoad } from "@/app/auth/signup/page";
 import User from "@/models/User";
 import { use } from "react";
 require('dotenv').config();
@@ -49,6 +50,7 @@ export default class AuthService {
         localStorage.setItem('token', response.data.token.token);
         localStorage.setItem('expiresIn', JSON.stringify(expires.valueOf()));
     }
+
 
     isAuthenticated() {
 
@@ -165,6 +167,17 @@ export default class AuthService {
     }
 
 
+    static async signupWithEmail<signupLoad>(request: NextRequest) {
+        return await performNextRequest<signupLoad>(`${process.env.NEXT_PUBLIC_API_BASE_URL}/api/v1/login`, {
+            method: "POST",
+            cache: "no-cache",
+            body: await request.json(),
+            headers: {
+                'Content-Type': 'application/json',
+                'Cache-Control': 'no-cache'
+            },
+        })
+    }
 
 
 }

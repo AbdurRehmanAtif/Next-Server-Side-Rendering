@@ -3,7 +3,7 @@ import React, { createContext, useContext, useState, ReactNode, Dispatch, SetSta
 import AuthService from "@/service/AuthService";
 import User from "@/models/User";
 import { ApiResponse } from "@/service/http/NextApi";
-import { Auth, Profile } from "@/app/components/auth/login/route";
+import { Auth, Profile } from "@/app/auth/login/route";
 import ProfileService from "@/service/ProfileService";
 
 interface AuthContextType {
@@ -12,6 +12,7 @@ interface AuthContextType {
   isAppReady: boolean
   updateContextUser: Dispatch<SetStateAction<User>>
   isAuthenticated: Boolean;
+  setIsAppReady:Dispatch<SetStateAction<boolean>>
   setIsAuthenticated: (value: boolean) => void;
   // updateContextUser: Dispatch<SetStateAction<User>>
   // updateAuth: Dispatch<SetStateAction<AuthService>>
@@ -45,6 +46,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
   const [auth] = useState(new AuthService());
   const [user, updateContextUser] = useState<User>(new User())
   const [isAppReady, setIsAppReady] = useState<boolean>(false)
+  
   const [isAuthenticated, setIsAuthenticated] = useState(auth.isAuthenticated());
 
 
@@ -92,7 +94,6 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
         setIsAuthenticated(false)
       }
     };
-
     initialHandshake();
   }, []);
 
@@ -105,6 +106,7 @@ export const AuthProvider = ({ children }: AuthProviderProps) => {
     updateContextUser,
     isAuthenticated,
     setIsAuthenticated,
+    setIsAppReady,
     // updateAuth,
     // updateContextUser,
     // isLoggedIn,

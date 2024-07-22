@@ -1,4 +1,4 @@
-import { Auth, Profile } from "@/app/components/auth/login/route";
+import { Auth, Profile } from "@/app/auth/login/route";
 import performNextRequest from "@/service/http/NextApi";
 import { ServerResponse } from "http";
 
@@ -40,6 +40,7 @@ export default class User {
     isUserStateUpdated() {
         return this.isStateUpdated;
     }
+    
 
     public parseAuth(auth: Auth) {
 

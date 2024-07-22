@@ -1,5 +1,5 @@
 import React, { RefObject } from 'react'
-import { Field} from "formik";
+import { Field } from "formik";
 
 
 interface StandardInputProps {
@@ -9,6 +9,9 @@ interface StandardInputProps {
         name: string;
         value: string | number;
         disabled?: boolean;
+        maxDate?: Date;
+        max?: number;
+        min?:number
     };
     classes: string;
     style: string;
@@ -21,12 +24,14 @@ interface StandardInputProps {
 
 
 const FormikFSField: React.FC<StandardInputProps> = ({ options, classes, style,
-    innerRef, isFocused, toggleFloatingLabel, setIsFocused, handleKeyDown}) => {
+    innerRef, isFocused, toggleFloatingLabel, setIsFocused, handleKeyDown }) => {
     return (
         <>
             <Field
+
                 type={options.type}
                 id={options.id}
+                max={options.maxDate ? options.maxDate : options.max}
                 name={options.name}
                 className={`${classes} ${style}`}
                 autoComplete="off"

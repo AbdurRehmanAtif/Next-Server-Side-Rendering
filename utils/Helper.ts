@@ -1,3 +1,4 @@
+import { cookies } from "next/headers";
 export default class Helper {
 
     static getCookie(cookieName: string): string {
@@ -49,7 +50,16 @@ export default class Helper {
 
         // Return the cookie value or empty string if not found
         return cookieValue || "";
-
-
     }
+
+    // static header(header: Headers): Headers {
+
+    //     const token = cookies().get("token")?.value
+    //     const new = new Headers()
+    //     if (!token) {
+    //         return
+    //     }
+
+    //     return new Headers()
+    // }
 }

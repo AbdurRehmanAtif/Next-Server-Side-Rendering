@@ -1,5 +1,4 @@
 import React from 'react';
-import Fonts from '@/models/fonts/Fonts';
 
 const FFormInputConainter: React.FC<any> = ({ toggleFloatingLabel, containerDivRef, handleBlur, options, isFocused, children }) => {
     return (
@@ -12,7 +11,7 @@ const FFormInputConainter: React.FC<any> = ({ toggleFloatingLabel, containerDivR
                     ref={containerDivRef}
                     onFocus={toggleFloatingLabel}
                     onBlur={handleBlur}>
-                    <label className={`absolute ml-2 text-left w-full transition-all duration-100 cursor-text ${Fonts.regular()} text-gray-600 ${isFocused || options?.value ? 'text-[12px] text-gray-400 -translate-y-3' : 'text-base'}`}
+                    <label className={`absolute ml-2 text-left w-full transition-all duration-100 cursor-text text-gray-600 ${isFocused || options?.value ? 'text-[12px] text-gray-400 -translate-y-3' : 'text-base'}`}
                         onClick={toggleFloatingLabel}> {options?.label} </label>
                     {children}
                 </div>

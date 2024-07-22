@@ -20,6 +20,11 @@ const config = {
       },
     },
     extend: {
+
+      fontFamily: {
+        zodiak: ["var(--font-Zodiak)"]
+      },
+
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -55,10 +60,15 @@ const config = {
           foreground: "hsl(var(--card-foreground))",
         },
         backgroundColor: "#faf5ff",
+        darkBackground: "#67645E",
+        lightBackground:"#f1f0ed",
         HoverText: "#f3e8ff",
         textDark: '#0705ef',
-        pageHeader:'#f3e8ff',
-        hyperLinks:'#5D3FD3'
+        pageHeader: '#f3e8ff',
+        hyperLinks: '#5D3FD3',
+        buttons: "#5D3FD3",
+        star: "#67645E",
+        textGray: "#67645E"
       },
       borderRadius: {
         lg: "var(--radius)",

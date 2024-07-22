@@ -22,7 +22,7 @@ export interface ApiResponse<T> {
 }
 
 
-export default async function performNextRequest<T>(endpoint: string, options?: RequestOptions): Promise<ServerApiResponse<T>> {
+export default async function performNextRequest<T>(endpoint: string, options?: RequestOptions): Promise<ApiResponse<T>> {
     try {
         const response: Response = await fetch(endpoint, {
             method: options?.method || 'GET',
@@ -45,4 +45,6 @@ export default async function performNextRequest<T>(endpoint: string, options?: 
         throw new CustomError(error.message, error.statusCode, error.success, error.error);
     }
 }
+
+
 
